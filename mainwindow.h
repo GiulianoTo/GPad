@@ -31,7 +31,7 @@ private:
     QAction* _redoAction;
     QMenu* _aboutMenu;
     QAction* _aboutAction;
-    QAction* _aboutQTAction;
+    QAction* _aboutQtAction;
 
     QToolBar* _toolBar;
 
