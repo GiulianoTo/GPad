@@ -2,11 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
-
+#include <QToolBar>
+#include <QMenuBar>
+#include <QWidget>
+#include <QMenu>
+#include <QStatusBar>
+#include <QTabBar>
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -16,6 +17,27 @@ public:
     ~MainWindow();
 
 private:
-    Ui::MainWindow *ui;
+    QMenuBar* _menuBar;
+    QMenu* _fileMenu;
+    QAction* _newAction;
+    QAction* _openAction;
+    QMenu* _openRecentMenu;
+    QAction* _saveAction;
+    QAction* _saveAsAction;
+    QAction* _printAction;
+    QAction* _exitAction;
+    QMenu* _editMenu;
+    QAction* _undoAction;
+    QAction* _redoAction;
+    QMenu* _aboutMenu;
+    QAction* _aboutAction;
+    QAction* _aboutQTAction;
+
+    QToolBar* _toolBar;
+
+    QTabBar* _tabBar;
+
+    QStatusBar* _statusBar;
+
 };
 #endif // MAINWINDOW_H
