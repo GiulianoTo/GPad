@@ -1,5 +1,7 @@
 #include <QVBoxLayout>
+#include <QMessageBox>
 #include "mainwindow.h"
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -73,20 +75,44 @@ MainWindow::MainWindow(QWidget *parent)
     _toolBar->addSeparator();
     _toolBar->addAction(_aboutAction);
 
+    _tabs = new QTabWidget();
+    //_tabs->addTab("prova");
 
+    _statusBar = new QStatusBar();
+    _statusBar->showMessage("Hello! Gpad");
 
     QVBoxLayout* layout = new QVBoxLayout();
-    layout->setContentsMargins(5,5,5,5);
+    layout->setContentsMargins(0,0,0,0);
+    layout->setSpacing(0);
     layout->addWidget(_menuBar);
     layout->addWidget(_toolBar);
+    layout->addWidget(_tabs);
+    layout->addWidget(_statusBar);
 
     auto _central = new QWidget;
     _central->setLayout(layout);
     setCentralWidget(_central);
+    //setMinimumSize(800,600);
+    setWindowIcon(QIcon(":/icons/notepad.png"));
+    //setWindowState(Qt::WindowMaximized);
+
+    // connections
+    connect(_aboutAction, SIGNAL(triggered(bool)), this, SLOT(aboutActionTriggered()));
+    connect(_aboutQtAction, SIGNAL(triggered(bool)), this, SLOT(aboutQtActionTriggered()));
 
 }
 
 MainWindow::~MainWindow()
 {
+}
+
+void MainWindow::aboutActionTriggered()
+{
+    QMessageBox::about(this, "About GPad", "<html><b>GPad 1.0</b>");
+}
+
+void MainWindow::aboutQtActionTriggered()
+{
+    QMessageBox::aboutQt(this);
 }
 

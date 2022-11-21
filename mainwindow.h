@@ -7,7 +7,7 @@
 #include <QWidget>
 #include <QMenu>
 #include <QStatusBar>
-#include <QTabBar>
+#include <QTabWidget>
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -35,9 +35,14 @@ private:
 
     QToolBar* _toolBar;
 
-    QTabBar* _tabBar;
+    QTabWidget* _tabs;
 
     QStatusBar* _statusBar;
+
+public slots:
+
+    void aboutActionTriggered();
+    void aboutQtActionTriggered();
 
 };
 #endif // MAINWINDOW_H
