@@ -1,7 +1,7 @@
-#include <QVBoxLayout>
-#include <QMessageBox>
 #include "mainwindow.h"
-
+#include <QMessageBox>
+#include <QVBoxLayout>
+#include "document.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -76,13 +76,13 @@ MainWindow::MainWindow(QWidget *parent)
     _toolBar->addAction(_aboutAction);
 
     _tabs = new QTabWidget();
-    //_tabs->addTab("prova");
+    _tabs->addTab(new Document(), "new 1");
 
     _statusBar = new QStatusBar();
     _statusBar->showMessage("Hello! Gpad");
 
-    QVBoxLayout* layout = new QVBoxLayout();
-    layout->setContentsMargins(0,0,0,0);
+    QVBoxLayout *layout = new QVBoxLayout();
+    layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(0);
     layout->addWidget(_menuBar);
     layout->addWidget(_toolBar);
@@ -99,12 +99,9 @@ MainWindow::MainWindow(QWidget *parent)
     // connections
     connect(_aboutAction, SIGNAL(triggered(bool)), this, SLOT(aboutActionTriggered()));
     connect(_aboutQtAction, SIGNAL(triggered(bool)), this, SLOT(aboutQtActionTriggered()));
-
 }
 
-MainWindow::~MainWindow()
-{
-}
+MainWindow::~MainWindow() {}
 
 void MainWindow::aboutActionTriggered()
 {
@@ -115,4 +112,3 @@ void MainWindow::aboutQtActionTriggered()
 {
     QMessageBox::aboutQt(this);
 }
-
